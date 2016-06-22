@@ -1,0 +1,17 @@
+.orgForm {
+    margin-bottom: 10px;
+}
+
+input {
+    width: 250px;
+}
+
+button {
+    margin-left: 5px;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+}
