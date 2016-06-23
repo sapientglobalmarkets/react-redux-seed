@@ -5,7 +5,7 @@ import {
     FETCH_REPOS_FAILURE
 } from './constants';
 
-import request from '../utils/request';
+import request from '../core/utils/request';
 
 const ORGS_URL = 'https://api.github.com/orgs';
 

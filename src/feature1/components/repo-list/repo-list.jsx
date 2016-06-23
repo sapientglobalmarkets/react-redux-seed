@@ -1,11 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import classNames from 'classnames';
-
-import s from './repo-list.css';
 
 let RepoList = ({repos}) => (
-    <table  className={classNames(s.repoList, 'mintable')}>
+    <table  className="mintable">
         <thead>
         <tr>
             <th>Repository</th>

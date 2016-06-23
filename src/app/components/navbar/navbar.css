@@ -1,4 +1,4 @@
-@import '../../../styles/colors';
+@import '../../../core/styles/colors';
 
 nav {
   border-color: $app-border-color;

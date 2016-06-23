@@ -1,4 +1,4 @@
-@import '../../../styles/colors';
+@import '../../../core/styles/colors';
 
 .toolbar {
     background-color: $color-brand;

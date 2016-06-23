@@ -9,7 +9,7 @@ import { configureStore } from './app';
 import 'sanitize.css/lib/sanitize.css';
 
 // Now override with our styles
-import styles from 'styles/styles.css';  // eslint-disable-line no-unused-vars
+import styles from 'core/styles/styles.css';  // eslint-disable-line no-unused-vars
 
 // Create redux store
 const initialState = {};
