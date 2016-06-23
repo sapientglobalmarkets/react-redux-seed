@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import s from './repo-list.css';
 
-let RepoList = ({}) => (
+let RepoList = ({repos}) => (
     <table  className={classNames(s.repoList, 'mintable')}>
         <thead>
         <tr>
@@ -14,39 +14,39 @@ let RepoList = ({}) => (
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>repo.name</td>
-            <td className="pull-right">repo.stargazers_count</td>
-            <td className="pull-right">repo.forks_count</td>
-        </tr>
+        {
+            repos.map(repo => (
+                <tr key={repo.name}>
+                    <td>{repo.name}</td>
+                    <td className="pull-right">{repo.stargazers_count}</td>
+                    <td className="pull-right">{repo.forks_count}</td>
+                </tr>
+            ))
+        }
         </tbody>
         <tfoot>
         <tr>
-            <td colSpan="3"><em>repos.length repositories retrieved</em></td>
+            <td colSpan="3"><em>{repos.length} repositories retrieved</em></td>
         </tr>
         </tfoot>
     </table>
 );
 
 RepoList.propTypes = {
+    repos: React.PropTypes.array
 };
 
 const mapStateToProps = (state) => {
 
-    let module1State = state.module1;
+    let feature1 = state.feature1;
 
     return {
-    }
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
+        repos: feature1.repos
     }
 };
 
 RepoList = connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
 )(RepoList);
 
 export default RepoList;
