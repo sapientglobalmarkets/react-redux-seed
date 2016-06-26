@@ -1,0 +1,11 @@
+import React from 'react';
+import { shallow } from 'enzyme';
+import { {{properCase name}} } from './{{ dashCase name }}';
+
+describe('<{{properCase name}} />', () => {
+
+    it('should render correctly', () => {
+        const dom = shallow(<{{properCase name}} />);
+        expect(dom).to.have.length(1);
+    });
+});
