@@ -44,7 +44,7 @@ const mapStateToProps = (state) => {
         orgName: github.orgName,
         loading: github.loading,
         error: github.error
-    }
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -54,7 +54,7 @@ const mapDispatchToProps = (dispatch) => {
             if (event !== undefined && event.preventDefault) event.preventDefault();
             dispatch(fetchRepos());
         }
-    }
+    };
 };
 
 OrgForm = connect(

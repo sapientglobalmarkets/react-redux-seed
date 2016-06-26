@@ -39,7 +39,7 @@ const mapStateToProps = (state) => {
 
     return {
         repos: github.repos
-    }
+    };
 };
 
 RepoList = connect(

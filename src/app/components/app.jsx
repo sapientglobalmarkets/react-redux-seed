@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Toolbar } from './toolbar';
 import { Navbar } from './navbar';
 import { GithubPage } from '../../github';
