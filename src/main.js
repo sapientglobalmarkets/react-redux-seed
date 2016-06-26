@@ -1,23 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { Router, RouterContext, browserHistory } from 'react-router';
 
-import { App } from './app';
 import { configureStore } from './app';
+import { routes } from './routes';
 
-// Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
 import 'sanitize.css/sanitize.css';
-
-// Now override with our styles
-import styles from 'core/styles/styles.css';  // eslint-disable-line no-unused-vars
+import 'core/styles/styles.css';
 
 // Create redux store
 const initialState = {};
 const store = configureStore(initialState);
 
-ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
-    document.getElementById('app')
+const createElement = props => {
+    return (
+        <Provider store={store}>
+            <RouterContext {...props} />
+        </Provider>
+    );
+};
+
+const root = (
+    <Router history={browserHistory}
+            render={createElement}
+            routes={routes}/>
 );
+
+ReactDOM.render(root, document.querySelector('main'));

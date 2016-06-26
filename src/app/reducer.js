@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { clockReducer } from '../clock';
 import { githubReducer } from '../github';
 
 /**
@@ -6,6 +7,7 @@ import { githubReducer } from '../github';
  */
 export default function createReducer(asyncReducers) {
     return combineReducers({
+        clock: clockReducer,
         github: githubReducer,
         ...asyncReducers
     });

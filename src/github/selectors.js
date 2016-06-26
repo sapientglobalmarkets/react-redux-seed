@@ -1,23 +1,6 @@
-import { createSelector } from 'reselect';
+export const feature = 'github';
 
-export const selectGithub = () => (state) => state.get('github');
-
-export const selectLoading = () => createSelector(
-  selectGithub(),
-  (githubState) => githubState.get('loading')
-);
-
-export const selectError = () => createSelector(
-  selectGithub(),
-  (githubState) => githubState.get('error')
-);
-
-export const selectOrgName = () => createSelector(
-  selectGithub(),
-  (githubState) => githubState.get('orgName')
-);
-
-export const selectRepos = () => createSelector(
-  selectGithub(),
-  (githubState) => githubState.get(['repos'])
-);
+export const getLoading = (state) => state[feature].loading;
+export const getError = (state) => state[feature].error;
+export const getOrgName = (state) => state[feature].orgName;
+export const getRepos = (state) => state[feature].repos;

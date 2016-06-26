@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import s from './org-form.css';
 import { changeOrgName, fetchRepos } from '../../actions';
+import { getOrgName, getLoading, getError } from '../../selectors';
 
 let OrgForm = ({orgName, loading, error, onChangeOrgName, onSubmitForm}) => (
     <div>
@@ -37,13 +38,10 @@ OrgForm.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-
-    let github = state.github;
-
     return {
-        orgName: github.orgName,
-        loading: github.loading,
-        error: github.error
+        orgName: getOrgName(state),
+        loading: getLoading(state),
+        error: getError(state)
     };
 };
 

@@ -5,7 +5,7 @@ import {
     FETCH_REPOS_FAILURE
 } from './constants';
 
-// The initial state of the App
+// Initial state of the feature
 const initialState = {
     loading: false,
     error: false,
