@@ -1,6 +1,6 @@
 import { Toolbar } from './toolbar';
 import { Navbar } from './navbar';
-import { Feature1Page } from '../../feature1';
+import { GithubPage } from '../../github';
 
 export default class App extends React.Component {
 
@@ -9,7 +9,7 @@ export default class App extends React.Component {
             <div>
                 <Toolbar />
                 <Navbar />
-                <Feature1Page />
+                <GithubPage />
             </div>
         );
     }

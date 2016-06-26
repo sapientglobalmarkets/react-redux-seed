@@ -1,14 +1,14 @@
 import React from 'react';
 
-import s from './feature1-page.css';
+import s from './github-page.css';
 import { OrgForm } from './org-form';
 import { RepoList } from './repo-list';
 
-let Feature1Page = () => (
-    <div className={s.feature1}>
+let GithubPage = () => (
+    <div className={s.github}>
         <OrgForm />
         <RepoList />
     </div>
 );
 
-export default Feature1Page;
+export default GithubPage;

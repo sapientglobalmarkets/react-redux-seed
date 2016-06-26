@@ -22,7 +22,7 @@ export function fetchRepos() {
         // Inform Redux that we are requesting repos
         dispatch(fetchReposRequest());
 
-        const orgName = getState().feature1.orgName;
+        const orgName = getState().github.orgName;
         return request(`${ORGS_URL}/${orgName}/repos?per_page=100`)
             // .then(repos => dispatch(fetchReposSuccess(repos)))
             .then(function(repos) {

@@ -38,12 +38,12 @@ OrgForm.propTypes = {
 
 const mapStateToProps = (state) => {
 
-    let feature1 = state.feature1;
+    let github = state.github;
 
     return {
-        orgName: feature1.orgName,
-        loading: feature1.loading,
-        error: feature1.error
+        orgName: github.orgName,
+        loading: github.loading,
+        error: github.error
     }
 };
 

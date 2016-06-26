@@ -35,10 +35,10 @@ RepoList.propTypes = {
 
 const mapStateToProps = (state) => {
 
-    let feature1 = state.feature1;
+    let github = state.github;
 
     return {
-        repos: feature1.repos
+        repos: github.repos
     }
 };
 

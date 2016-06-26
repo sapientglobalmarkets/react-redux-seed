@@ -13,7 +13,7 @@ const initialState = {
     repos: []
 };
 
-function feature1Reducer(state = initialState, action) {
+function githubReducer(state = initialState, action) {
     switch (action.type) {
         case CHANGE_ORGNAME:
             return Object.assign({}, state, {
@@ -41,4 +41,4 @@ function feature1Reducer(state = initialState, action) {
     }
 }
 
-export default feature1Reducer;
+export default githubReducer;
