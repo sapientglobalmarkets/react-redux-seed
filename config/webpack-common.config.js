@@ -86,7 +86,7 @@ module.exports = {
 
     plugins: [
         new HtmlPlugin({
-            title: 'React + MobX',
+            title: 'React Redux Seed',
             template: './src/index.html',
             inject: true
         }),
