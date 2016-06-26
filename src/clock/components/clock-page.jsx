@@ -8,11 +8,11 @@ import { getTime } from '../selectors';
 class Clock extends React.Component {
 
     componentDidMount() {
-        this.interval = setInterval(() => this.tick(), 1000);
+        this.intervalId = setInterval(() => this.tick(), 1000);
     }
 
     componentWillUnmount() {
-        clearInterval(this.interval);
+        clearInterval(this.intervalId);
     }
 
     tick() {
