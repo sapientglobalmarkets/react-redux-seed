@@ -1,7 +1,7 @@
-@import '../../../core/styles/colors';
+@import '../../../core/styles/colors.css';
 
 nav {
-  border-color: $app-border-color;
+  border-color: var(--app-border-color);
   border-style: solid;
   border-width: 0 0 1px;
   height: 48px;
@@ -9,7 +9,7 @@ nav {
 }
 
 nav a {
-  color: $app-link-text-color;
+  color: var(--app-link-text-color);
   font-size: 14px;
   font-weight: 500;
   line-height: 48px;
@@ -19,5 +19,5 @@ nav a {
 }
 
 nav .active {
-  color: $color-brand;
+  color: var(--color-brand);
 }
