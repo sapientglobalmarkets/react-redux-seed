@@ -6,7 +6,7 @@ import { App } from './app';
 import { configureStore } from './app';
 
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
-import 'sanitize.css/lib/sanitize.css';
+import 'sanitize.css/sanitize.css';
 
 // Now override with our styles
 import styles from 'core/styles/styles.css';  // eslint-disable-line no-unused-vars

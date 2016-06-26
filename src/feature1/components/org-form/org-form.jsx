@@ -12,7 +12,7 @@ let OrgForm = ({orgName, loading, error, onChangeOrgName, onSubmitForm}) => (
                 value={orgName}
                 onChange={onChangeOrgName}
             />
-            <button type="submit">Show Repos</button>
+            <button className={s.showRepos} type="submit">Show Repos</button>
         </form>
 
         <div>
