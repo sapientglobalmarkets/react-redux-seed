@@ -5,7 +5,12 @@ import s from './clock-page.css';
 import { changeDate } from '../actions';
 import { getTime } from '../selectors';
 
-class Clock extends React.Component {
+// Note that we are exporting our presentational component as well as
+// the container component. The presentational component is exported
+// so that we can test it independently of the container component.
+// Testing the container componet is harder because we would have to
+// mock the Redux environment.
+export class ClockPage extends React.Component {
 
     componentDidMount() {
         this.intervalId = setInterval(() => this.tick(), 1000);
@@ -30,7 +35,7 @@ class Clock extends React.Component {
     }
 }
 
-Clock.propTypes = {
+ClockPage.propTypes = {
     time: React.PropTypes.string.isRequired,
     dispatch: React.PropTypes.func.isRequired
 };
@@ -43,4 +48,4 @@ const mapStateToProps = (state) => {
 
 export default connect(
     mapStateToProps
-)(Clock);
+)(ClockPage);
