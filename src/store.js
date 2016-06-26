@@ -1,8 +1,19 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
 import thunk from 'redux-thunk';
-import createReducer from './reducer';
+
+import { clockReducer } from './clock';
+import { githubReducer } from './github';
 
 const devtools = window.devToolsExtension || (() => noop => noop);
+
+/** Creates the main reducer with the asynchronously loaded ones */
+function createReducer(asyncReducers) {
+    return combineReducers({
+        clock: clockReducer,
+        github: githubReducer,
+        ...asyncReducers
+    });
+}
 
 export default function configureStore(initialState = {}) {
     // Create the store with thunk middleware
