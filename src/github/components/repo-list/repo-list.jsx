@@ -42,8 +42,7 @@ const mapStateToProps = (state) => {
     };
 };
 
-RepoList = connect(
+export default connect(
     mapStateToProps
 )(RepoList);
 
-export default RepoList;

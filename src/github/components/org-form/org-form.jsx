@@ -55,9 +55,7 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-OrgForm = connect(
+export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(OrgForm);
-
-export default OrgForm;
