@@ -88,6 +88,7 @@ module.exports = {
         new HtmlPlugin({
             title: 'React Redux Seed',
             template: './src/index.html',
+            favicon: './src/assets/images/favicon.ico',
             inject: true
         }),
         new ExtractTextPlugin('main.css', {
