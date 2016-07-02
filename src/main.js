@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { Router, RouterContext, browserHistory } from 'react-router';
-
+import {browserHistory} from 'react-router';
 import configureStore from './store';
-import { routes } from './routes';
+import {App} from './app';
 
 import 'sanitize.css/sanitize.css';
 import 'assets/styles/styles.css';
@@ -13,18 +11,32 @@ import 'assets/styles/styles.css';
 const initialState = {};
 const store = configureStore(initialState);
 
-const createElement = props => {
-    return (
-        <Provider store={store}>
-            <RouterContext {...props} />
-        </Provider>
+const render = ((rootElement)=> {
+
+    return (appRoot)=> {
+        ReactDOM.render(appRoot, rootElement);
+    };
+
+})(document.querySelector('main'));
+
+if (__DEV__ && module.hot) {
+    const AppContainer = require('react-hot-loader').AppContainer;
+
+    render(
+        <AppContainer>
+            <App store={store} history={browserHistory}/>
+        </AppContainer>
     );
-};
 
-const root = (
-    <Router history={browserHistory}
-            render={createElement}
-            routes={routes}/>
-);
-
-ReactDOM.render(root, document.querySelector('main'));
+    module.hot.accept('./app', ()=> {
+        render(
+            <AppContainer>
+                <App store={store} history={browserHistory}/>
+            </AppContainer>
+        );
+    });
+} else {
+    render(
+        <App store={store} history={browserHistory}/>
+    );
+}
