@@ -9,7 +9,7 @@ import 'redux-thunk';
 import 'reselect';
 
 // Router
-// import 'react-router';
+import 'react-router';
 
 // Other libs
 import 'whatwg-fetch';
