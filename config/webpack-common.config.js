@@ -1,10 +1,11 @@
 'use strict';
 
-const CopyPlugin = require('copy-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
+
+const SRC_PATH = path.join(__dirname, '../src');
 
 const cssLoader = [
     'css-loader?' + ['localIdentName=[local]__[hash:base64:4]', 'modules', 'importLoaders=1', 'sourceMap'].join('&'),
@@ -26,7 +27,7 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 loader: 'eslint',
-                exclude: /node_modules/
+                include: SRC_PATH
             }
         ],
 
@@ -34,13 +35,13 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 loader: 'babel',
-                exclude: /node_modules/
+                include: SRC_PATH
             },
 
             {
                 // Transform our own .css files using PostCSS and CSS-modules
                 test: /\.css$/,
-                exclude: /node_modules/,
+                include: SRC_PATH,
                 loader: ExtractTextPlugin.extract('style-loader', cssLoader)
             },
 
@@ -59,11 +60,11 @@ module.exports = {
                 },
             },
             {
-                test: /\.(woff|woff2)$/,
+                test: /\.(eot|ttf|woff|woff2)$/,
                 loader: 'url',
                 query: {
                     name: '[name].[hash].[ext]',
-                    limit: 10000,
+                    limit: 25000,
                 },
             },
         ],
@@ -94,11 +95,5 @@ module.exports = {
         new ExtractTextPlugin('main.css', {
             allChunks: true
         }),
-        new CopyPlugin([
-            {
-                from: './src/assets',
-                to: 'assets'
-            }
-        ])
     ]
 };
