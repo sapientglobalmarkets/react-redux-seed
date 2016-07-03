@@ -1,20 +1,18 @@
 process.env.BABEL_ENV = 'test'; // Set the proper environment for babel
-const testFileGlob = 'src/**/*.test.@(js|jsx)';
-
 
 module.exports = function (config) {
     config.set({
         basePath: '',
-        frameworks: ['mocha', 'chai'],
+        frameworks: ['mocha', 'chai', 'sinon'],
 
         files: [
-            testFileGlob
+            'src/test.index.js'
         ],
         exclude: [],
 
 
         preprocessors: {
-            [testFileGlob]: ['webpack', 'sourcemap'],
+            'src/test.index.js': ['webpack', 'sourcemap'],
         },
         webpack: require('./config/webpack-test.config'),
         webpackMiddleware: {stats: 'minimal'},
@@ -25,7 +23,7 @@ module.exports = function (config) {
             dir: 'coverage',
             reporters: [
                 {type: 'html', subdir: 'html'},
-                {type: 'text-summary'},
+                {type: 'text-summary'}
             ],
             includeAllSources: true,
             instrumenterOptions: {
@@ -41,5 +39,5 @@ module.exports = function (config) {
         browsers: ['PhantomJS'],
         singleRun: true,
         concurrency: Infinity
-    })
+    });
 };
