@@ -5,9 +5,7 @@ import {
     FETCH_REPOS_FAILURE
 } from './constants';
 
-import request from '../core/utils/request';
-
-const ORGS_URL = 'https://api.github.com/orgs';
+import {config, request} from '../core';
 
 export function changeOrgName(orgName) {
     return {
@@ -23,11 +21,8 @@ export function fetchRepos() {
         dispatch(fetchReposRequest());
 
         const orgName = getState().github.orgName;
-        return request(`${ORGS_URL}/${orgName}/repos?per_page=100`)
-            // .then(repos => dispatch(fetchReposSuccess(repos)))
-            .then(function(repos) {
-                return dispatch(fetchReposSuccess(repos));
-            })
+        return request(`${config.ORGS_URL}/${orgName}/repos?per_page=100`)
+            .then(repos => dispatch(fetchReposSuccess(repos)))
             .catch(error => dispatch(fetchReposFailure(error)));
     };
 }
