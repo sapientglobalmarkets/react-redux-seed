@@ -1,9 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
 import s from './clock-page.css';
-import { changeDate } from '../actions';
-import { getTime } from '../selectors';
+import {changeDate} from '../actions';
+import {getTime} from '../selectors';
 
 // Note that we are exporting our presentational component as well as
 // the container component. The presentational component is exported
@@ -21,7 +21,7 @@ export class ClockPage extends React.Component {
     }
 
     tick() {
-        const { dispatch } = this.props;
+        const {dispatch} = this.props;
         dispatch(changeDate(new Date()));
     }
 

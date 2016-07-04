@@ -1,8 +1,8 @@
-import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
+import {applyMiddleware, combineReducers, createStore, compose} from 'redux';
 import thunk from 'redux-thunk';
 
-import { clockReducer } from './clock';
-import { githubReducer } from './github';
+import {clockReducer} from './clock';
+import {githubReducer} from './github';
 
 const devtools = window.devToolsExtension || (() => noop => noop);
 

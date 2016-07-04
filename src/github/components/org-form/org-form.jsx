@@ -1,9 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
 import s from './org-form.css';
-import { changeOrgName, fetchRepos } from '../../actions';
-import { getOrgName, getLoading, getError } from '../../selectors';
+import {changeOrgName, fetchRepos} from '../../actions';
+import {getOrgName, getLoading, getError} from '../../selectors';
 
 let OrgForm = ({orgName, loading, error, onChangeOrgName, onSubmitForm}) => (
     <div>
