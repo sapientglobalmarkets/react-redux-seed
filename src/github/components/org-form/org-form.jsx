@@ -9,13 +9,14 @@ let OrgForm = ({orgName, loading, error, onChangeOrgName, onSubmitForm}) => (
     <div>
         <form className={s.orgForm} onSubmit={onSubmitForm}>
             <input
+                className={`sdinput ${s.orgName}`}
                 data-element="input"
                 placeholder="Organization Name (e.g. facebook)"
                 value={orgName}
                 onChange={onChangeOrgName}
             />
             <button
-                className={s.showRepos}
+                className={`sdbutton ${s.showRepos}`}
                 data-action="loadRepos"
                 type="submit">
                 Show Repos
@@ -24,11 +25,8 @@ let OrgForm = ({orgName, loading, error, onChangeOrgName, onSubmitForm}) => (
 
         <div>
             {(loading) ? (<span>Loading...</span>) : null}
-            {(error) ? (<span className={s.error}>{error.message}</span>) : null}
-            {(!loading && !error) ? '\u00a0' : null}
+            {(!loading && error) ? (<span className={s.error}>{error.message}</span>) : null}
         </div>
-
-
     </div>
 );
 
