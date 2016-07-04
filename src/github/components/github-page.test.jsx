@@ -7,13 +7,21 @@ describe('<GithubPage>', ()=> {
 
     describe('with a default store', ()=> {
         beforeEach(()=> {
-            this.store = {github: {orgName: '', repos: []}};
+            this.store = {
+                github: {orgName: '', repos: []},
+                subscribe(){
+                },
+                getState() {
+                    return {...this};
+                },
+                dispatch(action){}
+            };
         });
 
         it('should render correctly', ()=> {
             const dom = shallow(
                 <Provider store={this.store}>
-                    <GithubPage/>
+                    <GithubPage />
                 </Provider>
             );
             expect(dom).to.have.length(1);
@@ -33,13 +41,12 @@ describe('<GithubPage>', ()=> {
     });
 
     describe('when <input> is given', ()=> {
-        let store, dom, spy;
+        let dom, spy;
 
         beforeEach(()=> {
-            store = require('../../store').store;
 
             dom = mount(
-                <Provider store={store}>
+                <Provider store={this.store}>
                     <GithubPage/>
                 </Provider>
             );
@@ -47,39 +54,6 @@ describe('<GithubPage>', ()=> {
 
         afterEach(()=> {
             spy.restore();
-        });
-
-        // Use of Spies to also invoke original behavior
-        it('should change "orgName" when <input> value is changed', ()=> {
-
-            spy = sinon.spy(store.github, 'setOrgName');
-
-            dom.find('[data-element="input"]')
-                .simulate('change', {
-                    target: {
-                        value: 'sapientglobalmarkets'
-                    }
-                });
-
-            expect(spy.calledWith('sapientglobalmarkets')).to.equal(true);
-            expect(store.github.orgName).to.equal('sapientglobalmarkets');
-        });
-
-        // Use of stubs to avoid invoking original function/behavior
-        it('should call "loadRepos()" when the loadRepos <button> is clicked', ()=> {
-            spy = sinon.stub(store.github, 'loadRepos');
-
-            dom.find('[data-element="input"]')
-                .simulate('change', {
-                    target: {
-                        value: 'sapientglobalmarkets'
-                    }
-                });
-
-            dom.find('[data-action="loadRepos"]')
-                .simulate('click');
-
-            expect(spy.called).to.equal(true);
         });
 
     });
