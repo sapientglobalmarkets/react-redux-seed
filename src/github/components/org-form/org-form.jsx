@@ -9,11 +9,17 @@ let OrgForm = ({orgName, loading, error, onChangeOrgName, onSubmitForm}) => (
     <div>
         <form className={s.orgForm} onSubmit={onSubmitForm}>
             <input
+                data-element="input"
                 placeholder="Organization Name (e.g. facebook)"
                 value={orgName}
                 onChange={onChangeOrgName}
             />
-            <button className={s.showRepos} type="submit">Show Repos</button>
+            <button
+                className={s.showRepos}
+                data-action="loadRepos"
+                type="submit">
+                Show Repos
+            </button>
         </form>
 
         <div>
