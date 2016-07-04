@@ -1,7 +1,7 @@
 const util = require('../util');
 
 module.exports = {
-    description: 'Generate a Feature-level, React Component',
+    description: 'Generate a feature',
     prompts: [
         {
             type: 'input',
@@ -17,54 +17,71 @@ module.exports = {
             default: 'MyFeature'
         },
         {
-            type: 'confirm',
-            name: 'stateless',
-            message: 'Make it a Stateless Functional Component?',
-            default: true
+            type: 'list',
+            name: 'type',
+            message: 'What type of Component do you want?',
+            choices: [
+                { name: 'Stateless Function', value: 'function' },
+                { name: 'Component Class', value: 'class' },
+            ],
+            default: 'class'
         },
     ],
     actions: function (data) {
-        var actions = [
-            // index
+        const actions = [
             {
                 type: 'add',
                 path: '../src/{{dashCase name}}/index.js',
-                templateFile: './component/index.hbs'
+                templateFile: './feature/index.hbs'
             },
 
-            // test
             {
                 type: 'add',
-                path: '../src/{{dashCase name}}/{{dashCase name}}.test.jsx',
+                path: '../src/{{dashCase name}}/actions.js',
+                templateFile: './feature/actions.hbs'
+            },
+
+            {
+                type: 'add',
+                path: '../src/{{dashCase name}}/constants.js',
+                templateFile: './feature/constants.hbs'
+            },
+
+            {
+                type: 'add',
+                path: '../src/{{dashCase name}}/reducer.js',
+                templateFile: './feature/reducer.hbs'
+            },
+
+            {
+                type: 'add',
+                path: '../src/{{dashCase name}}/selectors.js',
+                templateFile: './feature/selectors.hbs'
+            },
+
+            {
+                type: 'add',
+                path: '../src/{{dashCase name}}/components/{{dashCase name}}.test.jsx',
                 templateFile: './component/test.hbs'
             },
 
-            // css
             {
                 type: 'add',
-                path: '../src/{{dashCase name}}/{{dashCase name}}.css',
+                path: '../src/{{dashCase name}}/components/{{dashCase name}}.css',
                 templateFile: './component/css.hbs'
-            },
-
-            // store
-            {
-                type: 'add',
-                path: '../src/{{dashCase name}}/{{dashCase name}}.store.js',
-                templateFile: './feature/store.hbs'
             }
-
         ];
 
-        if (data.stateless) {
+        if (data.type === 'function') {
             actions.push({
                 type: 'add',
-                path: '../src/{{dashCase name}}/{{dashCase name}}.jsx',
+                path: '../src/{{dashCase name}}/components/{{dashCase name}}.jsx',
                 templateFile: './component/function.hbs'
             });
         } else {
             actions.push({
                 type: 'add',
-                path: '../src/{{dashCase name}}/{{dashCase name}}.jsx',
+                path: '../src/{{dashCase name}}/components/{{dashCase name}}.jsx',
                 templateFile: './component/class.hbs'
             });
         }

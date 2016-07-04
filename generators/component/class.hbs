@@ -1,11 +1,25 @@
 import React from 'react';
-
-// import s from './{{ dashCase name }}.css';
+import style from './{{dashCase name}}.css';
 
 export default class {{ properCase name }} extends React.Component {
+
+    static get defaultProps() {
+        return {
+            type: '',
+        };
+    }
+
+    static get propTypes() {
+        return {
+            type: React.PropTypes.string,
+        };
+    }
+
     render() {
         return (
-            <p>{{ properCase name }}</p>
+            <div className={ style.{{camelCase name}} }>
+                <h2>{{ properCase name }}</h2>
+            </div>
         );
     }
 }

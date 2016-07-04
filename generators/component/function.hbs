@@ -1,13 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
-// import s from './{{ dashCase name }}.css';
+import {connect} from 'react-redux';
+import style from './{{dashCase name}}.css';
 import {} from '../../actions';
 import {} from '../../selectors';
 
 export function {{ properCase name }}() {
     return (
-        <p>{{ properCase name }}</p>
+        <div className={ style.{{camelCase name}} }>
+            <h2>{{ properCase name }}</h2>
+        </div>
     );
 }
 
