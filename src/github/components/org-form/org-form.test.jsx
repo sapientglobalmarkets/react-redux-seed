@@ -2,16 +2,16 @@ import React from 'react';
 import {shallow, mount} from 'enzyme';
 import {OrgForm} from './org-form';
 
-describe('<OrgForm>', ()=> {
+describe('<OrgForm>', () => {
 
-    it('should render correctly', ()=> {
+    it('should render correctly', () => {
         const dom = shallow(
             <OrgForm />
         );
         expect(dom).to.have.length(1);
     });
 
-    it('should contain the necessary elements', ()=> {
+    it('should contain the necessary elements', () => {
         const dom = mount(
             <OrgForm/>
         );
@@ -20,11 +20,10 @@ describe('<OrgForm>', ()=> {
 
     });
 
-    describe('when <input> is given', ()=> {
+    describe('when <input> is given', () => {
         let dom, spy;
 
-        beforeEach(()=> {
-
+        beforeEach(() => {
             const props = {
                 onChangeOrgName(event){}
             };
@@ -43,19 +42,14 @@ describe('<OrgForm>', ()=> {
                 });
         });
 
-        afterEach(()=> {
+        afterEach(() => {
             spy.restore();
         });
 
-
-        it('should invoke the change handler', ()=>{
-
+        it('should invoke the change handler', () => {
             expect(spy.called).to.equal(true);
             expect(spy.getCall(0).args[0].target.value).to.equal('sape');
         });
-
     });
 
-
-})
-;
+});

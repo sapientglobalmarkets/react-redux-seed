@@ -3,10 +3,10 @@ import {shallow, mount} from 'enzyme';
 import {Provider} from 'react-redux';
 import GithubPage from './github-page';
 
-describe('<GithubPage>', ()=> {
+describe('<GithubPage>', () => {
 
-    describe('with a default store', ()=> {
-        beforeEach(()=> {
+    describe('with a default store', () => {
+        beforeEach(() => {
             this.store = {
                 github: {orgName: '', repos: []},
                 subscribe(){
@@ -18,7 +18,7 @@ describe('<GithubPage>', ()=> {
             };
         });
 
-        it('should render correctly', ()=> {
+        it('should render correctly', () => {
             const dom = shallow(
                 <Provider store={this.store}>
                     <GithubPage />
@@ -27,7 +27,7 @@ describe('<GithubPage>', ()=> {
             expect(dom).to.have.length(1);
         });
 
-        it('should contain the necessary elements', ()=> {
+        it('should contain the necessary elements', () => {
             const dom = mount(
                 <Provider store={this.store}>
                     <GithubPage/>
@@ -37,26 +37,6 @@ describe('<GithubPage>', ()=> {
             expect(dom.find('[data-element="input"]')).to.have.length(1);
 
         });
-
     });
-
-    describe('when <input> is given', ()=> {
-        let dom, spy;
-
-        beforeEach(()=> {
-
-            dom = mount(
-                <Provider store={this.store}>
-                    <GithubPage/>
-                </Provider>
-            );
-        });
-
-        afterEach(()=> {
-            spy.restore();
-        });
-
-    });
-
 
 });
