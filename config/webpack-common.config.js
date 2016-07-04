@@ -76,7 +76,7 @@ module.exports = {
 
     // Process the CSS with PostCSS
     postcss: () => [
-        require('precss'),
+        require('precss')(),
         require('postcss-cssnext')({
             browsers: ['last 2 versions', 'ie > 10']
         }),
@@ -94,6 +94,6 @@ module.exports = {
         }),
         new ExtractTextPlugin('main.css', {
             allChunks: true
-        }),
+        })
     ]
 };
