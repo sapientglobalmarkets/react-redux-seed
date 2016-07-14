@@ -4,52 +4,37 @@ import {OrgForm} from './org-form';
 
 describe('<OrgForm>', () => {
 
-    it('should render correctly', () => {
-        const dom = shallow(
-            <OrgForm />
+    beforeEach(() => {
+        this.onChangeOrgName = sinon.spy();
+        this.onSubmitForm = sinon.spy();
+        this.wrapper = shallow(
+            <OrgForm
+                orgName=""
+                loading={false}
+                error={false}
+                onChangeOrgName={this.onChangeOrgName}
+                onSubmitForm={this.onSubmitForm}
+            />
         );
-        expect(dom).to.have.length(1);
     });
 
-    it('should contain the necessary elements', () => {
-        const dom = mount(
-            <OrgForm/>
-        );
-        expect(dom.find('[data-action="loadRepos"]')).to.have.length(1);
-        expect(dom.find('[data-element="input"]')).to.have.length(1);
-
+    it('should render the orgInput element and the loadRepos button', () => {
+        expect(this.wrapper.find('[data-element="orgInput"]')).to.have.length(1);
+        expect(this.wrapper.find('[data-action="loadRepos"]')).to.have.length(1);
     });
 
-    describe('when <input> is given', () => {
-        let dom, spy;
 
-        beforeEach(() => {
-            const props = {
-                onChangeOrgName(event){}
-            };
+    it('should invoke the onChangeOrgName handler when orgInput is changed', () => {
 
-            spy = sinon.spy(props, 'onChangeOrgName');
+        this.wrapper.find('[data-element="orgInput"]')
+            .simulate('change', {
+                target: {
+                    value: 'facebook'
+                }
+            });
 
-            dom = mount(
-                <OrgForm {...props}/>
-            );
-
-            dom.find('[data-element="input"]')
-                .simulate('change', {
-                    target: {
-                        value: 'sape'
-                    }
-                });
-        });
-
-        afterEach(() => {
-            spy.restore();
-        });
-
-        it('should invoke the change handler', () => {
-            expect(spy.called).to.equal(true);
-            expect(spy.getCall(0).args[0].target.value).to.equal('sape');
-        });
+        expect(this.onChangeOrgName.called).to.equal(true);
+        expect(this.onChangeOrgName.getCall(0).args[0].target.value).to.equal('facebook');
     });
 
 });

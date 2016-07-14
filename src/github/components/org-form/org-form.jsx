@@ -10,7 +10,7 @@ let OrgForm = ({orgName, loading, error, onChangeOrgName, onSubmitForm}) => (
         <form className={s.orgForm} onSubmit={onSubmitForm}>
             <input
                 className={`sdinput ${s.orgName}`}
-                data-element="input"
+                data-element="orgInput"
                 placeholder="Organization Name (e.g. facebook)"
                 value={orgName}
                 onChange={onChangeOrgName}
