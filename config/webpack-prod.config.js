@@ -10,7 +10,9 @@ module.exports = merge(webpackCommon, {
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
-        new webpack.optimize.DedupePlugin(),
+        // Disable due to issue with this plugin
+        // See https://github.com/webpack/webpack/issues/2644
+        // new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 unused: true,
