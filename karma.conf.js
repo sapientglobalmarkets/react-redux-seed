@@ -3,7 +3,7 @@ process.env.BABEL_ENV = 'test'; // Set the proper environment for babel
 module.exports = function (config) {
     config.set({
         basePath: '',
-        frameworks: ['mocha', 'chai', 'sinon'],
+        frameworks: ['mocha', 'chai', 'sinon', 'es6-shim'],
 
         files: [
             'src/test.index.js',
