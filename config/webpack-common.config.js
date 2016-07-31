@@ -42,14 +42,20 @@ module.exports = {
                 // Transform our own .css files using PostCSS and CSS-modules
                 test: /\.css$/,
                 include: SRC_PATH,
-                loader: ExtractTextPlugin.extract('style-loader', cssLoader)
+                loader: ExtractTextPlugin.extract({
+                    notExtractLoader: 'style-loader',
+                    loader: cssLoader
+                })
             },
 
             {
                 // Do not transform vendor's CSS with CSS-modules
                 test: /\.css$/,
                 include: /node_modules/,
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+                loader: ExtractTextPlugin.extract({
+                    notExtractLoader: 'style-loader',
+                    loader: 'css-loader'
+                })
             },
 
             {
@@ -92,7 +98,8 @@ module.exports = {
             favicon: './src/assets/images/favicon.ico',
             inject: true
         }),
-        new ExtractTextPlugin('main.css', {
+        new ExtractTextPlugin({
+            filename: 'main.css',
             allChunks: true
         })
     ]
