@@ -10,7 +10,6 @@ Create your own project on Github or elsewhere. Then add a git-remote pointing t
 ```shell
 > git remote add redux-seed https://github.com/sapientglobalmarkets/react-redux-seed.git
 > git pull redux-seed master
-> git merge redux-seed/master
 ```
 
 At this point you should have all the seed files. Now you can run:

@@ -5,7 +5,7 @@ import configureStore from './store';
 import {App} from './app';
 
 import 'sanitize.css/sanitize.css';
-import 'assets/styles/styles.css';
+import './assets/styles/styles.css';
 
 // Create redux store
 const initialState = {};
