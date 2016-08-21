@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 let RepoList = ({repos}) => (
-    <table  className="mintable">
+    <table className="mintable">
         <thead>
         <tr>
             <th>Repository</th>

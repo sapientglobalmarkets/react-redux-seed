@@ -53,7 +53,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onChangeOrgName: (event) => dispatch(changeOrgName(event.target.value)),
         onSubmitForm: (event) => {
-            if (event !== undefined && event.preventDefault) event.preventDefault();
+            if (event !== undefined && event.preventDefault) { event.preventDefault(); }
             dispatch(fetchRepos());
         }
     };

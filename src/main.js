@@ -11,9 +11,9 @@ import './assets/styles/styles.css';
 const initialState = {};
 const store = configureStore(initialState);
 
-const render = ((rootElement)=> {
+const render = ((rootElement) => {
 
-    return (appRoot)=> {
+    return (appRoot) => {
         ReactDOM.render(appRoot, rootElement);
     };
 
@@ -28,14 +28,15 @@ if (__DEV__ && module.hot) {
         </AppContainer>
     );
 
-    module.hot.accept('./app', ()=> {
+    module.hot.accept('./app', () => {
         render(
             <AppContainer>
                 <App store={store} history={browserHistory}/>
             </AppContainer>
         );
     });
-} else {
+}
+else {
     render(
         <App store={store} history={browserHistory}/>
     );
