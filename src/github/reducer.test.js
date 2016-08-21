@@ -1,7 +1,5 @@
-import React from 'react';
-
-import githubReducer from './reducer'
-import * as actions from './actions'
+import githubReducer from './reducer';
+import * as actions from './actions';
 
 describe('Github Reducer', () => {
 
@@ -10,7 +8,7 @@ describe('Github Reducer', () => {
         error: false,
         orgName: '',
         repos: []
-    }
+    };
 
     it('should handle CHANGE_ORGNAME', () => {
         const action = actions.changeOrgName('facebook');

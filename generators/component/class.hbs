@@ -3,17 +3,13 @@ import style from './{{dashCase name}}.css';
 
 export default class {{ properCase name }} extends React.Component {
 
-    static get defaultProps() {
-        return {
-            type: '',
-        };
-    }
+    static defaultProps = {
+        type: '',
+    };
 
-    static get propTypes() {
-        return {
-            type: React.PropTypes.string,
-        };
-    }
+    static propTypes = {
+        type: React.PropTypes.string,
+    };
 
     render() {
         return (
@@ -22,4 +18,5 @@ export default class {{ properCase name }} extends React.Component {
             </div>
         );
     }
+
 }
