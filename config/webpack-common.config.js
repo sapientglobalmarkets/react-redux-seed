@@ -17,6 +17,7 @@ module.exports = {
         main: './src/main.js',
         vendor: './src/vendor.js'
     },
+
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, '../dist')
@@ -37,7 +38,6 @@ module.exports = {
                 loader: 'babel',
                 include: SRC_PATH
             },
-
             {
                 // Transform our own .css files using PostCSS and CSS-modules
                 test: /\.css$/,
@@ -47,7 +47,6 @@ module.exports = {
                     loader: cssLoader
                 })
             },
-
             {
                 // Do not transform vendor's CSS with CSS-modules
                 test: /\.css$/,
@@ -57,13 +56,12 @@ module.exports = {
                     loader: 'css-loader'
                 })
             },
-
             {
                 test: /\.(jpg|png|svg)$/,
                 loader: 'file',
                 query: {
                     name: '[name].[hash].[ext]'
-                },
+                }
             },
             {
                 test: /\.(eot|ttf|woff|woff2)$/,
@@ -71,12 +69,17 @@ module.exports = {
                 query: {
                     name: '[name].[hash].[ext]',
                     limit: 25000,
-                },
+                }
             },
-        ],
+            {
+                test: /\.json$/,
+                loader: 'json-loader'
+            }
+        ]
     },
+
     resolve: {
-        modules: ['node_modules'],
+        modules: [SRC_PATH, 'node_modules'],
         extensions: ['', '.js', '.jsx', '.json']
     },
 

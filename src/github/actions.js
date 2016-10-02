@@ -5,7 +5,7 @@ import {
     FETCH_REPOS_FAILURE
 } from './constants';
 
-import {config, request} from '../core';
+import {config, request} from 'core';
 
 export function changeOrgName(orgName) {
     return {

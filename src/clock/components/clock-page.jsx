@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
-import s from './clock-page.css';
 import {changeDate} from '../actions';
 import {getTime} from '../selectors';
+
+import s from './clock-page.css';
 
 // Note that we are exporting our presentational component as well as
 // the container component. The presentational component is exported
